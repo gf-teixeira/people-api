@@ -18,11 +18,11 @@ http://localhost:8080/api/v1/people
 ---
 Rotas:
 ```
-GET: /people
-POST: /people
-GET (By id): /people/id
-PUT (By id): /people/id
-DELETE (By id): /people/id
+GET: /api/v1/people
+POST: /api/v1/people
+GET (By id): /api/v1/people/id
+PUT (By id): /api/v1/people/id
+DELETE (By id): /api/v1/people/id
 ```
 
 ```JSON
