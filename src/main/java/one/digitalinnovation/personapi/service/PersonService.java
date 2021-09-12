@@ -26,30 +26,15 @@ public class PersonService {
     }
 
     public MessageResponseDTO createPerson(PersonDTO personDTO){
-
-
         Person personToSave = personMapper.toModel(personDTO);
-
         Person savedPerson = personRepository.save(personToSave);
-
-        return MessageResponseDTO
-                .builder()
-                .message("Created person with ID " + savedPerson.getId())
-                .build();
-        //builder().build() -> evita criar direto no construtor,
-        // passa de uma forma mais encapsulada
+        return createMessageResponse(savedPerson.getId(), "Created person with ID ");
 
     }
-
     public List<PersonDTO> listAll() {
-        
 	    List<Person> allPeople = personRepository.findAll();
     	return allPeople.stream()
 		.map(personMapper::toDTO).collect(Collectors.toList());
-    }
-    private Person verifyIfExists(Long personId) throws PersonNotFoundException{
-        return personRepository.findById(personId)
-                .orElseThrow(() -> new PersonNotFoundException((personId)));
     }
 
     public PersonDTO findById(Long personId) throws PersonNotFoundException{
@@ -61,5 +46,25 @@ public class PersonService {
         verifyIfExists(personId);
         personRepository.deleteById(personId);
 
+    }
+
+    public MessageResponseDTO updateById(Long personId, PersonDTO personDTO) throws PersonNotFoundException {
+        verifyIfExists(personId);
+        Person personToUpdate = personMapper.toModel(personDTO);
+        Person updatedPerson = personRepository.save(personToUpdate);
+
+        return createMessageResponse(updatedPerson.getId(), "Updated person with Id");
+    }
+
+    private Person verifyIfExists(Long personId) throws PersonNotFoundException{
+        return personRepository.findById(personId)
+                .orElseThrow(() -> new PersonNotFoundException((personId)));
+    }
+
+    private MessageResponseDTO createMessageResponse(Long id, String message) {
+        return MessageResponseDTO
+                .builder()
+                .message(message + id)
+                .build();
     }
 }
