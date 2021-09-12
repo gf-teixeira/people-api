@@ -30,13 +30,13 @@ Person: {
  "id": number,
  "firstName": string,
  "lastName": string,
- "cpf": string,
- "birthDate": string,
+ "cpf": "xxx.xxx.xxx-xx" (string),
+ "birthDate": "dd-mm-yyyy" (string),
  "phones": [
     {
        "id": number,
        "type": "MOBILE" | "HOME" | "COMMERCIAL",
-       "number": string
+       "number": "(__)_________" (string)
     }
  ]
 }
