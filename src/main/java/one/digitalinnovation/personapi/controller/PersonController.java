@@ -37,5 +37,10 @@ public class PersonController {
     public MessageResponseDTO createPerson(@RequestBody @Valid  PersonDTO personDTO){
         return personService.createPerson(personDTO);
     }
+    @DeleteMapping("/{personId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(@PathVariable Long personId) throws PersonNotFoundException {
+        personService.deleteById(personId);
+    }
 }
 
