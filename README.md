@@ -24,3 +24,20 @@ GET (By id): /people/id
 PUT (By id): /people/id
 DELETE (By id): /people/id
 ```
+
+```JSON
+Person: {
+ "id": number,
+ "firstName": string,
+ "lastName": string,
+ "cpf": string,
+ "birthDate": string,
+ "phones": [
+    {
+       "id": number,
+       "type": "MOBILE" | "HOME" | "COMMERCIAL",
+       "number": string
+    }
+ ]
+}
+```
