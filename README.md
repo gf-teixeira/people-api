@@ -25,19 +25,20 @@ PUT (By id): /api/v1/people/id
 DELETE (By id): /api/v1/people/id
 ```
 
-```JSON
+```
+Phone:  {
+ "id": (number),
+ "type": "MOBILE" | "HOME" | "COMMERCIAL",
+ "number": "( )_________" (string)
+}
+
 Person: {
- "id": number,
- "firstName": string,
- "lastName": string,
+ "id": (number),
+ "firstName": (string),
+ "lastName": (string),
  "cpf": "xxx.xxx.xxx-xx" (string),
  "birthDate": "dd-mm-yyyy" (string),
- "phones": [
-    {
-       "id": number,
-       "type": "MOBILE" | "HOME" | "COMMERCIAL",
-       "number": "(__)_________" (string)
-    }
- ]
+ "phones": (Array)
 }
+
 ```
